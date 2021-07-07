@@ -78,6 +78,11 @@ main form div .icon-password {
   color: #333;
 }
 
+main form div .icon-repeat {
+  top: 27.5rem;
+  color: #333;
+}
+
 a {
   text-decoration: none;
   color: #666;
