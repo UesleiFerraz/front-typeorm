@@ -5,8 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entrar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/style.css" />
@@ -17,28 +25,34 @@
 
       <form>
         <div>
-          <i class="material-icons"> person </i>
           <label for="username">Usuario</label>
+
+          <i class="material-icons-outlined icon-user"> person </i>
           <input id="username" type="text" placeholder="Digite seu usuario" />
         </div>
         <div>
-          <span class="material-icons"> lock </span>
           <label for="password">Senha</label>
-          <input
-            type="password"
-            name=""
-            id="password"
-            placeholder="Digite sua senha"
-          />
-          <a href="#">Esqueceu a senha</a>
+
+          <i class="material-icons-outlined icon-password"> lock </i>
+          <input type="password" id="password" placeholder="Digite sua senha" />
+          <a href="#">Esqueceu a senha?</a>
         </div>
         <button type="submit">Login</button>
       </form>
 
-      <div>
+      <div class="social">
+        <p>Ou logue com uma rede social</p>
+        <div>
+          <i class="material-icons-outlined"> facebook </i>
+          <i class="material-icons-outlined"> sports_esports </i>
+          <i class="material-icons-outlined"> android </i>
+        </div>
+      </div>
+
+      <footer>
         <p>Não tem uma conta?</p>
         <a href="#">Clique aqui</a>
-      </div>
+      </footer>
     </main>
     <script src="./js/scripts.js"></script>
   </body>
