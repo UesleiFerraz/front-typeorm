@@ -23,6 +23,7 @@ main {
   border-radius: 0.7rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 15px 0 rgba(104, 116, 115, 0.75);
 }
 
 main h1 {
@@ -110,6 +111,7 @@ main form button {
   border-radius: 25px;
   cursor: pointer;
   color: #fff;
+  transition: 0.6s ease-in-out;
   background: linear-gradient(
     to right,
     #fa4ce3,
@@ -117,8 +119,14 @@ main form button {
     rgb(147, 181, 255),
     #77fff4
   );
-  background-size: 100%;
+  background-size: 300% 100%;
   background-repeat: no-repeat;
+  box-shadow: 0 4px 15px 0 rgba(104, 116, 115, 0.75);
+}
+
+button:hover {
+  font-size: 1.1rem;
+  background-position: 100% 0;
 }
 
 main .social {
