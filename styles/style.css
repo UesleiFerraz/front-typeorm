@@ -23,7 +23,7 @@ main {
   border-radius: 0.7rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 15px 0 rgba(104, 116, 115, 0.75);
+  box-shadow: 0 5px 15px 0 rgba(104, 116, 115, 0.75);
 }
 
 main h1 {
@@ -60,6 +60,7 @@ main form div {
   font-size: 0.9rem;
   color: #555;
   font-weight: 0;
+  position: relative;
 }
 
 main form div i {
@@ -67,20 +68,7 @@ main form div i {
   justify-content: center;
   align-items: center;
   position: absolute;
-}
-
-main form div .icon-user {
-  top: 16.9rem;
-  color: #333;
-}
-
-main form div .icon-password {
-  top: 22.2rem;
-  color: #333;
-}
-
-main form div .icon-repeat {
-  top: 27.5rem;
+  top: 2.5rem;
   color: #333;
 }
 
@@ -136,6 +124,41 @@ main .social {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.social small {
+  font-size: 16px;
+  position: relative;
+}
+
+main .social p::before,
+main .social p::after,
+main .social small::before,
+main .social small::after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 18%;
+  background-color: black;
+  top: 39px;
+}
+
+main .social small::before {
+  top: 12px;
+  left: -70px;
+}
+
+main .social small::after {
+  top: 12px;
+  right: -70px;
+}
+
+main .social p::before {
+  left: 20px;
+}
+main .social p::after {
+  right: 20px;
 }
 
 main .social div i {

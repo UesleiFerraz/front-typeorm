@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #fff;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-nav {
+  position: fixed;
+  top: 0;
+  width: 80vw;
+  background-color: #fff;
+}
+
+.container-nav nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5vh;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.container-nav nav button {
+  width: 6%;
+  max-width: 90px;
+  font-size: 0.8rem;
+  font-weight: 0;
+  height: 2.3rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin-right: 3rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.6s;
+  background: linear-gradient(
+    to right,
+    red,
+    #ff25e2,
+    rgb(180, 9, 9),
+    rgb(255, 80, 80)
+  );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 15px 0 rgba(104, 116, 115, 0.75);
+}
+
+button:hover {
+  font-size: 0.9rem;
+  background-position: 100% 0;
+}
+
+.container-scraps {
+  background-color: #fff;
+  height: 85vh;
+  width: 80vw;
+  max-width: 1500px;
+  border-radius: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+main form {
+  display: flex;
+  width: 100%;
+  padding: 2rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+  position: relative;
+}
+
+main form div label {
+  font-weight: 0;
+  font-size: 1rem;
+  color: #666;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+main form div input {
+  padding: 0.5rem;
+  border: none;
+}
+
+main form div input:focus {
+  border: none;
+  outline: none;
+}
+
+main form div::before,
+main form div::after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 180px;
+  top: 90%;
+  left: 4%;
+  background: rgb(0, 0, 0, 0.9);
+}
+
+main form button {
+  width: 30%;
+  max-width: 120px;
+  font-size: 0.8rem;
+  font-weight: 0;
+  height: 2.3rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin-right: 3rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.6s;
+  background: linear-gradient(
+    to right,
+    red,
+    #ff25e2,
+    rgb(180, 9, 9),
+    rgb(255, 80, 80)
+  );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 15px 0 rgba(104, 116, 115, 0.75);
+}
