@@ -140,7 +140,7 @@ main .social small::after {
   content: "";
   height: 1px;
   width: 18%;
-  background-color: black;
+  background-color: rgb(0, 0, 0, 0.9);
   top: 39px;
 }
 
