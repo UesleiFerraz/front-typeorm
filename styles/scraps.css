@@ -164,14 +164,22 @@ main table tbody tr td {
   margin: 1rem;
 }
 
-a {
+td a {
   text-decoration: none;
-  color: #666;
-  transition: 0.4s;
-  cursor: pointer;
-  margin: 1rem;
+  color: #666 !important;
+  transition: 0.9s !important;
+  cursor: pointer !important;
+  margin: 1rem !important;
 }
 
-a:hover {
-  color: #0056b3;
+td a:hover {
+  color: #0056b3 !important;
+}
+
+.invalid {
+  height: 1rem;
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  margin: 1rem;
 }

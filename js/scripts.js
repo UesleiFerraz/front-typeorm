@@ -11,6 +11,7 @@ const tBody = document.querySelector("tbody");
 const usernameError = document.querySelector("#username-error");
 const passwordError = document.querySelector("#password-error");
 const repeatPasswordError = document.querySelector("#repeat-password-error");
+const scrapError = document.querySelector("#scrap-error");
 
 if (document.querySelector("#signUp")) {
   let timerUsername;
@@ -66,6 +67,8 @@ async function registerUser(event) {
     } catch {
       usernameError.innerHTML = "Verifique se os campos estão preenchidos";
     }
+  } else {
+    usernameError.innerHTML = "Verifique se os campos estão preenchidos";
   }
 }
 async function login(event) {
@@ -77,6 +80,7 @@ async function login(event) {
     });
 
     localStorage.setItem("token", user.data.token);
+    localStorage.setItem("username", username.value);
     location = "scraps.html";
   } catch {
     passwordError.innerHTML = "senha ou nome invalido";
@@ -84,6 +88,12 @@ async function login(event) {
 }
 
 if (document.querySelector("#scraps")) {
+  document.querySelector(
+    "#welcome"
+  ).innerHTML = `Bem vindo ao sistema de recados, ${localStorage.getItem(
+    "username"
+  )}`;
+
   if (token) {
     try {
       JSON.parse(atob(token.split(".")[1])).userIdToken;
@@ -93,6 +103,14 @@ if (document.querySelector("#scraps")) {
   } else {
     location = "index.html?error=login";
   }
+
+  title.addEventListener("keyup", () => {
+    scrapError.innerHTML = "";
+  });
+
+  description.addEventListener("keyup", () => {
+    scrapError.innerHTML = "";
+  });
 
   (async function getScraps() {
     const response = await axios.get(`/scraps`, {
@@ -120,8 +138,32 @@ async function saveScrap(event) {
   if (button.id) {
     editScrap();
   } else {
-    const response = await axios.post(
-      "/scraps",
+    try {
+      const response = await axios.post(
+        "/scraps",
+        {
+          title: title.value,
+          description: description.value,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      const scrap = response.data.scrap;
+      tBody.prepend(createElement(scrap));
+      title.value = "";
+      description.value = "";
+    } catch {
+      scrapError.innerHTML = "verifique se todos campos foram preenchidos";
+    }
+  }
+}
+
+async function editScrap() {
+  try {
+    const response = await axios.put(
+      `/scraps/${button.id}`,
       {
         title: title.value,
         description: description.value,
@@ -130,33 +172,17 @@ async function saveScrap(event) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
+    const scrap = await response.data.scrap;
 
-    const scrap = response.data.scrap;
-    tBody.prepend(createElement(scrap));
+    document.querySelector(`#id_${button.id}`).innerHTML =
+      createElement(scrap).innerHTML;
+
     title.value = "";
     description.value = "";
+    button.id = "";
+  } catch {
+    scrapError.innerHTML = "verifique se todos campos foram preenchidos";
   }
-}
-
-async function editScrap() {
-  const response = await axios.put(
-    `/scraps/${button.id}`,
-    {
-      title: title.value,
-      description: description.value,
-    },
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-  );
-  const scrap = await response.data.scrap;
-
-  document.querySelector(`#id_${button.id}`).innerHTML =
-    createElement(scrap).innerHTML;
-
-  title.value = "";
-  description.value = "";
-  button.id = "";
 }
 
 function signOff() {
@@ -190,7 +216,7 @@ function createElement(scrap) {
   let trDOM = document.createElement("tr");
   trDOM.id = `id_${scrap.id}`;
   trDOM.innerHTML = `
-      <td scope="row">ueslei</td>
+      <td scope="row">${localStorage.getItem("username")}</td>
       <td>${scrap.title}</td>
       <td>${scrap.description}</td>
       <td>
