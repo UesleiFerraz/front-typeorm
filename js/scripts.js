@@ -1,7 +1,7 @@
 axios.defaults.baseURL = "http://localhost:3000";
 
 const token = localStorage.getItem("token");
-const button = document.querySelector("#save");
+const button = document.querySelector(".save");
 const username = document.querySelector("#username");
 const password = document.querySelector("#password");
 const repeatPassword = document.querySelector("#repeat-password");
@@ -10,7 +10,7 @@ const description = document.querySelector("#description");
 const tBody = document.querySelector("tbody");
 const usernameError = document.querySelector("#username-error");
 const passwordError = document.querySelector("#password-error");
-const repeatError = document.querySelector("#repeat-password-error");
+const repeatPasswordError = document.querySelector("#repeat-password-error");
 
 if (document.querySelector("#signUp")) {
   let timerUsername;
@@ -30,7 +30,21 @@ if (document.querySelector("#signUp")) {
     usernameError.innerHTML = "";
   });
 
-  password.addEventListener("keyup", () => {});
+  password.addEventListener("keyup", () => {
+    if (password.value.length < 6) {
+      passwordError.innerHTML = "a senha deve ser maior que 6 caracteres";
+    } else {
+      passwordError.innerHTML = "";
+    }
+  });
+
+  repeatPassword.addEventListener("keyup", () => {
+    if (repeatPassword.value !== password.value) {
+      repeatPasswordError.innerHTML = "as senhas não são iguais";
+    } else {
+      repeatPasswordError.innerHTML = "";
+    }
+  });
 }
 
 async function registerUser(event) {
@@ -54,10 +68,6 @@ async function registerUser(event) {
     }
   }
 }
-
-if (document.querySelector("#signIn")) {
-}
-
 async function login(event) {
   event.preventDefault();
   try {
@@ -68,14 +78,8 @@ async function login(event) {
 
     localStorage.setItem("token", user.data.token);
     location = "scraps.html";
-  } catch (error) {
-    if (error.message.includes("406")) {
-      passwordError.innerHTML = "Senha invalida";
-      iconShowHidePassword1.classList.add("invalid");
-    } else {
-      usernameError.innerHTML = "nome de usuario não existe";
-      iconShowHidePassword1.classList.add("invalid");
-    }
+  } catch {
+    passwordError.innerHTML = "senha ou nome invalido";
   }
 }
 
