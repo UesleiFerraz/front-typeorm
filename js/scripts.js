@@ -64,6 +64,8 @@ async function registerUser(event) {
       username.value = "";
       password.value = "";
       repeatPassword.value = "";
+
+      new bootstrap.Modal(document.getElementById("myModal"), {}).show();
     } catch {
       usernameError.innerHTML = "Verifique se os campos estão preenchidos";
     }
