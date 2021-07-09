@@ -28,11 +28,13 @@
           <label for="username">Usuario</label>
           <i class="material-icons-outlined icon-user"> person </i>
           <input id="username" type="text" placeholder="Digite seu usuario" />
+          <small class="invalid" id="username-error"></small>
         </div>
         <div>
           <label for="password">Senha</label>
           <i class="material-icons-outlined icon-password"> lock </i>
           <input type="password" id="password" placeholder="Digite sua senha" />
+          <small class="invalid" id="password-error"></small>
         </div>
         <div>
           <label for="repeat-password">Repita a senha</label>
@@ -42,6 +44,7 @@
             id="repeat-password"
             placeholder="Repita sua senha"
           />
+          <small class="invalid" id="repeat-password-error"></small>
         </div>
         <button onclick="registerUser(event)">Registrar agora</button>
       </form>

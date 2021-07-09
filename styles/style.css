@@ -20,6 +20,7 @@ main {
   height: 85vh;
   width: 35vw;
   max-width: 500px;
+  min-width: 500px;
   border-radius: 0.7rem;
   display: flex;
   flex-direction: column;
@@ -186,4 +187,9 @@ main footer {
 
 main footer p {
   margin-right: 0.7rem;
+}
+
+.invalid {
+  color: red;
+  margin-bottom: 1rem;
 }

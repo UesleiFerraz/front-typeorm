@@ -8,9 +8,31 @@ const repeatPassword = document.querySelector("#repeat-password");
 const title = document.querySelector("#title");
 const description = document.querySelector("#description");
 const tBody = document.querySelector("tbody");
+const usernameError = document.querySelector("#username-error");
+const passwordError = document.querySelector("#password-error");
+const repeatError = document.querySelector("#repeat-password-error");
 
 if (document.querySelector("#signUp")) {
+  let timerUsername;
+  username.addEventListener("keyup", () => {
+    clearTimeout(timerUsername);
+    timerUsername = setTimeout(async () => {
+      try {
+        await axios.post("/users", {
+          username: username.value,
+        });
+      } catch (error) {
+        if (error.message.includes("409")) {
+          usernameError.innerHTML = "usuario ja esta em uso";
+        }
+      }
+    }, 1000);
+    usernameError.innerHTML = "";
+  });
+
+  password.addEventListener("keyup", () => {});
 }
+
 async function registerUser(event) {
   event.preventDefault();
   if (
