@@ -136,16 +136,27 @@ main form button {
     to right,
     #2725c7,
     #2aa7e0,
-    rgb(39, 98, 167),
-    #1b038f
+    rgb(199, 123, 230),
+    #00109c
   );
   background-size: 300% 100%;
   background-repeat: no-repeat;
   box-shadow: 0 4px 15px 0 rgba(104, 116, 115, 0.75);
 }
 
-main table tbody {
-  position: relative;
+table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+thead tr,
+tbody tr {
+  display: flex;
+  width: 80vw;
+  align-items: center;
+  justify-content: space-around;
 }
 
 main table tbody tr td {
@@ -158,6 +169,7 @@ a {
   color: #666;
   transition: 0.4s;
   cursor: pointer;
+  margin: 1rem;
 }
 
 a:hover {
