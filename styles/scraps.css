@@ -159,9 +159,21 @@ tbody tr {
   justify-content: space-around;
 }
 
-main table tbody tr td {
+main table tbody tr td,
+th {
+  letter-spacing: 1px;
   padding: 1.5rem;
   margin: 1rem;
+  text-align: justify;
+  height: 100px;
+  width: 10rem;
+  overflow-x: hidden;
+  overflow-y: unset;
+}
+
+th {
+  height: 30px;
+  overflow: hidden;
 }
 
 td a {
