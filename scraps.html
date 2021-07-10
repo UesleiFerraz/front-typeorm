@@ -30,10 +30,18 @@
     </div>
     <div class="container-scraps">
       <main>
-        <form class="hover" id="scraps">
+        <form class="hover needs-validation" id="scraps" novalidate>
           <div>
             <label for="title">Titulo</label>
-            <input type="text" id="title" placeholder="Digite seu titulo" />
+            <input
+              type="text"
+              id="title"
+              placeholder="Digite seu titulo"
+              required
+            />
+            <span class="invalid-tooltip">
+              Escreva um titulo valido e com menos de 50 caracteres.
+            </span>
           </div>
           <div>
             <label for="description">Descrição</label>
@@ -41,9 +49,13 @@
               type="text"
               id="description"
               placeholder="Digite sua descrição"
+              required
             />
+            <span class="invalid-tooltip"> Escreva uma descrição valida. </span>
           </div>
-          <button class="save" onclick="saveScrap(event)">salvar</button>
+          <button class="save" type="submit" onclick="saveScrap(event)">
+            salvar
+          </button>
           <small class="invalid" id="scrap-error"></small>
         </form>
         <table>

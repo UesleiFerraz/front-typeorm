@@ -11,7 +11,7 @@ const tBody = document.querySelector("tbody");
 const usernameError = document.querySelector("#username-error");
 const passwordError = document.querySelector("#password-error");
 const repeatPasswordError = document.querySelector("#repeat-password-error");
-const scrapError = document.querySelector("#scrap-error");
+const scrapError = document.querySelector("form");
 
 if (document.querySelector("#signUp")) {
   let timerUsername;
@@ -106,22 +106,12 @@ if (document.querySelector("#scraps")) {
     location = "index.html?error=login";
   }
 
-  title.addEventListener("keyup", () => {
-    scrapError.innerHTML = "";
-  });
-
-  description.addEventListener("keyup", () => {
-    scrapError.innerHTML = "";
-  });
-
   (async function getScraps() {
     const response = await axios.get(`/scraps`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
     const scraps = response.data.scraps;
-
-    console.log("oi");
 
     scraps.reverse();
     scraps.forEach(scrap => {
@@ -156,8 +146,11 @@ async function saveScrap(event) {
       tBody.prepend(createElement(scrap));
       title.value = "";
       description.value = "";
+      scrapError.classList.contains("was-validated")
+        ? scrapError.classList.remove("was-validated")
+        : "";
     } catch {
-      scrapError.innerHTML = "verifique se todos campos foram preenchidos";
+      scrapError.classList.add("was-validated");
     }
   }
 }
@@ -182,8 +175,11 @@ async function editScrap() {
     title.value = "";
     description.value = "";
     button.id = "";
+    scrapError.classList.contains("was-validated")
+      ? scrapError.classList.remove("was-validated")
+      : "";
   } catch {
-    scrapError.innerHTML = "verifique se todos campos foram preenchidos";
+    scrapError.classList.add("was-validated");
   }
 }
 
