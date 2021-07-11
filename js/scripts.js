@@ -1,13 +1,15 @@
 axios.defaults.baseURL = "https://bdd-final.herokuapp.com";
 
+const tBody = document.querySelector("tbody");
 const token = localStorage.getItem("token");
-const button = document.querySelector(".save");
+
 const username = document.querySelector("#username");
 const password = document.querySelector("#password");
 const repeatPassword = document.querySelector("#repeat-password");
 const title = document.querySelector("#title");
 const description = document.querySelector("#description");
-const tBody = document.querySelector("tbody");
+const button = document.querySelector(".save");
+
 const usernameError = document.querySelector("#username-error");
 const passwordError = document.querySelector("#password-error");
 const repeatPasswordError = document.querySelector("#repeat-password-error");
