@@ -126,7 +126,6 @@ if (document.querySelector("#scraps")) {
 
 async function saveScrap(event) {
   event.preventDefault();
-
   if (button.id) {
     handleScrap("PUT");
   } else {
