@@ -128,49 +128,31 @@ async function saveScrap(event) {
   event.preventDefault();
 
   if (button.id) {
-    editScrap();
+    handleScrap("PUT");
   } else {
-    try {
-      const response = await axios.post(
-        "/scraps",
-        {
-          title: title.value,
-          description: description.value,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      const scrap = response.data.scrap;
-      tBody.prepend(createElement(scrap));
-      title.value = "";
-      description.value = "";
-      scrapError.classList.contains("was-validated")
-        ? scrapError.classList.remove("was-validated")
-        : "";
-    } catch {
-      scrapError.classList.add("was-validated");
-    }
+    handleScrap("POST");
   }
 }
 
-async function editScrap() {
+async function handleScrap(verb) {
   try {
-    const response = await axios.put(
-      `/scraps/${button.id}`,
-      {
+    const response = await axios({
+      method: verb,
+      url: `/scraps/${button.id}`,
+      data: {
         title: title.value,
         description: description.value,
       },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const scrap = await response.data.scrap;
 
-    document.querySelector(`#id_${button.id}`).innerHTML =
-      createElement(scrap).innerHTML;
+    if (verb === "PUT") {
+      document.querySelector(`#id_${button.id}`).innerHTML =
+        createElement(scrap).innerHTML;
+    } else {
+      tBody.prepend(createElement(scrap));
+    }
 
     title.value = "";
     description.value = "";
